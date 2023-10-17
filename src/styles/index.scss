@@ -161,12 +161,12 @@ img{
 
 @import "partials/animations.scss";
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 3000px){
     .container{
         padding-inline: 18vw;
     }
 }
-@media screen and (max-width: 1050px){
+@media screen and (max-width: 5000px){
     .container{
         padding-inline: 12vw;
     }
@@ -204,16 +204,16 @@ img{
         padding-inline: 6vw;
     }
     .footer{
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         .footer-section:nth-child(1){
-            grid-column: span 4;
+            grid-column: span 1;
         }
         .footer-section:nth-child(2), .footer-section:nth-child(3){
-            grid-column: span 2;
+            grid-column: span 1;
         }
     }
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 5000px){
     .container{
         padding-inline: 3vw;
     }

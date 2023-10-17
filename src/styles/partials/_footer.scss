@@ -3,12 +3,13 @@
     color: #fff;
     padding-block: 3em;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-gap: 1em;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-gap: 1.2em;
     .footer-section{
         p{
             opacity: .9;
             margin-bottom: .5em;
+            font-size: 0.8em;
         }
         p.title{
             opacity: 1;
