@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+  <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div align="center">
+  <h2 >Available Recipes</h2>
+  <tr>
+    <div align = "left" >
+      <h3 align="center"><a  th:href="@{'/new'}">Add new</a></h3>
+    </div>
+
+  </tr>
+  <tr>
+
+    <div class="col-sm-5" align = "center">
+      <div class="panel-body" align = "center" >
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr  th:each="Recipe : ${listrecipe }">
+            <td th:text="${Recipe.id}">ID</td>
+            <td th:text="${Recipe.name}">Name</td>
+            <td th:text="${Recipe.description}">Description</td>
+
+            <td>
+              <a th:href="@{'/edit/' + ${Recipe.id}}">Edit</a>
+            </td>
+            <td>
+              <a th:href="@{'/delete/' + ${Recipe.id}}">Delete</a>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </tr>
+
+  </tbody>
+  </table>
+</div>
+</body>
+</html>

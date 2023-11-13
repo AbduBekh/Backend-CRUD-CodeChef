@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventory</title>
+</head>
+<body>
+<h1>Inventory</h1>
+
+<!-- Display inventory items -->
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Price Per Unit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="Inventory : ${inventoryList}">
+    <td th:text="${Inventory.id}"></td>
+    <td th:text="${Inventory.itemName}"></td>
+    <td th:text="${Inventory.quantity}"></td>
+    <td th:text="${Inventory.price}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Display order form -->
+<h2>Place Order</h2>
+<form th:action="@{/placeOrder}" th:object="${order}" method="post">
+  <table>
+    <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Inventory : ${order.items}">
+      <td th:text="${Inventory.itemName}"></td>
+      <td><input type="number" th:field="*{items[__${itemStat.index}__].quantity}" /></td>
+    </tr>
+    </tbody>
+  </table>
+  <button type="submit">Place Order</button>
+</form>
+
+<!-- Display order summary -->
+<h2 th:if="${orderSummary}">Order Summary</h2>
+<div th:if="${orderSummary}">
+  <p>Total Price: <span th:text="${orderSummary.totalPrice}"></span></p>
+  <ul>
+    <li th:each="Inventory : ${orderSummary.items}">
+      <span th:text="${Inventory.quantity}"></span>
+      <span th:text="${Inventory.item}"></span>
+      <span th:text="${Inventory.totalPrice}"></span>
+    </li>
+  </ul>
+</div>
+
+<!-- Display error message -->
+<p style="color: red;" th:if="${error}" th:text="${error}"></p>
+</body>
+</html>
